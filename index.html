@@ -1,0 +1,1346 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Checklist de Préparation Présentielle</title>
+  <meta name="description" content="Une activité pédagogique interactive pour préparer la journée présentielle, avec suivi de progression, sauvegarde locale et export." />
+  <meta property="og:title" content="Checklist de Préparation Présentielle" />
+  <meta property="og:description" content="Finalisez votre préparation avant le Jour J de formation présentielle." />
+
+  <!-- Google Fonts: Fira Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,500&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --accent-pres: #d41875;
+      --accent-pres-rgb: 212, 24, 117;
+      --color-ok: #16a34a;
+      --color-ok-bg: #f0fdf4;
+      --color-ok-border: #bbf7d0;
+      --color-ok-text: #15803d;
+      --color-rep: #ea580c;
+      --color-rep-bg: #fff7ed;
+      --color-rep-border: #fed7aa;
+      --color-rep-text: #c2410c;
+      --bg-page: #f9f9fb;
+      --text-main: #1f2937;
+      --text-heading: #111827;
+      --text-muted: #6b7280;
+      --border-card: #e5e7eb;
+      --border-card-subtle: #f3f4f6;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Fira Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg-page);
+      color: var(--text-main);
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+      padding: 2rem 1rem;
+      min-height: 100vh;
+    }
+
+    ::selection {
+      background-color: rgba(var(--accent-pres-rgb), 0.12);
+      color: var(--accent-pres);
+    }
+
+    .container {
+      max-width: 56rem;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+
+    /* Header */
+
+    /* Header */
+    header {
+      margin-bottom: 1.5rem;
+    }
+
+    .header-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: var(--accent-pres);
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      font-size: 0.625rem;
+      text-transform: uppercase;
+      margin-bottom: 0.5rem;
+    }
+
+    .header-main {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 1rem;
+      border-bottom: 1px solid rgba(229, 231, 235, 0.8);
+      padding-bottom: 1.25rem;
+    }
+
+    @media (min-width: 640px) {
+      .header-main {
+        flex-direction: row;
+        align-items: flex-end;
+      }
+    }
+
+    .header-title {
+      font-size: 2rem;
+      font-weight: 800;
+      letter-spacing: -0.025em;
+      color: var(--text-heading);
+      text-transform: uppercase;
+      line-height: 1;
+    }
+
+    @media (min-width: 640px) {
+      .header-title {
+        font-size: 2.25rem;
+      }
+    }
+
+    .header-title .highlight {
+      color: var(--accent-pres);
+    }
+
+    .header-subtitle {
+      color: var(--text-muted);
+      font-weight: 500;
+      font-size: 0.875rem;
+      margin-top: 0.5rem;
+    }
+
+    @media (min-width: 640px) {
+      .header-subtitle {
+        font-size: 1.05rem;
+      }
+    }
+
+    .header-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.375rem;
+      align-self: flex-start;
+      background-color: rgba(var(--accent-pres-rgb), 0.05);
+      border: 1px solid rgba(var(--accent-pres-rgb), 0.12);
+      color: var(--accent-pres);
+      padding: 0.5rem 0.875rem;
+      border-radius: 0.5rem;
+      font-size: 0.625rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+
+    /* Progress Card */
+    .progress-card {
+      background: #ffffff;
+      border-radius: 0.75rem;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
+      border: 1px solid var(--border-card);
+      padding: 1.25rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .progress-header {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      margin-bottom: 1rem;
+    }
+
+    @media (min-width: 640px) {
+      .progress-header {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+      }
+    }
+
+    .progress-heading {
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: #9ca3af;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    .progress-desc {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-top: 0.25rem;
+    }
+
+    .progress-counter {
+      display: flex;
+      align-items: baseline;
+      gap: 0.375rem;
+      align-self: flex-start;
+    }
+
+    @media (min-width: 640px) {
+      .progress-counter {
+        align-self: center;
+      }
+    }
+
+    .validation-ratio {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--accent-pres);
+      letter-spacing: -0.025em;
+    }
+
+    .validation-ratio-total {
+      color: #9ca3af;
+      font-size: 0.875rem;
+      font-weight: 400;
+    }
+
+    .validation-ratio-label {
+      font-size: 0.625rem;
+      font-weight: 700;
+      color: #9ca3af;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .progress-track {
+      width: 100%;
+      background-color: #e5e7eb;
+      border-radius: 9999px;
+      height: 0.75rem;
+      overflow: hidden;
+      margin-bottom: 1.25rem;
+    }
+
+    .progress-fill {
+      height: 100%;
+      background-color: var(--accent-pres);
+      border-radius: 9999px;
+      width: 0%;
+      transition: width 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0.75rem;
+    }
+
+    .stat-chip {
+      border-radius: 0.5rem;
+      padding: 0.625rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+
+    .stat-chip.stat-ok {
+      background-color: #f0fdf4;
+      border: 1px solid #dcfce7;
+    }
+
+    .stat-chip.stat-rep {
+      background-color: #fff7ed;
+      border: 1px solid #ffedd5;
+    }
+
+    .stat-chip.stat-neutral {
+      background-color: #f9fafb;
+      border: 1px solid #e5e7eb;
+    }
+
+    .stat-label {
+      display: flex;
+      align-items: center;
+      gap: 0.375rem;
+      font-size: 0.625rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 0.125rem;
+    }
+
+    .stat-chip.stat-ok .stat-label { color: #15803d; }
+    .stat-chip.stat-rep .stat-label { color: #c2410c; }
+    .stat-chip.stat-neutral .stat-label { color: #6b7280; }
+
+    .stat-value {
+      font-size: 1.25rem;
+      font-weight: 700;
+      letter-spacing: -0.025em;
+    }
+
+    .stat-chip.stat-ok .stat-value { color: #166534; }
+    .stat-chip.stat-rep .stat-value { color: #9a3412; }
+    .stat-chip.stat-neutral .stat-value { color: #374151; }
+
+    /* Info Banner */
+    .info-banner {
+      background-color: rgba(239, 246, 255, 0.7);
+      border: 1px solid #dbeafe;
+      border-radius: 0.75rem;
+      padding: 1rem;
+      margin-bottom: 1.5rem;
+      display: flex;
+      gap: 0.75rem;
+      font-size: 0.875rem;
+      color: #1e40af;
+      align-items: flex-start;
+    }
+
+    .info-banner svg {
+      flex-shrink: 0;
+      margin-top: 0.125rem;
+      color: #2563eb;
+    }
+
+    /* Checklist Table / Card View */
+    .checklist-card {
+      background: #ffffff;
+      border-radius: 0.75rem;
+      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+      border: 1px solid var(--border-card);
+      overflow: hidden;
+      margin-bottom: 1.5rem;
+    }
+
+    table.checklist-table {
+      width: 100%;
+      border-collapse: collapse;
+      display: block;
+    }
+
+    @media (min-width: 768px) {
+      table.checklist-table {
+        display: table;
+      }
+    }
+
+    .checklist-table thead {
+      display: none;
+      background-color: var(--accent-pres);
+    }
+
+    @media (min-width: 768px) {
+      .checklist-table thead {
+        display: table-header-group;
+      }
+    }
+
+    .checklist-table th {
+      padding: 1rem;
+      font-size: 0.6875rem;
+      font-weight: 700;
+      color: #ffffff;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      text-align: left;
+      line-height: 1;
+    }
+
+    .checklist-table th.col-elem { width: 45%; padding-left: 1.5rem; }
+    .checklist-table th.col-action { width: 35%; }
+    .checklist-table th.col-status { width: 20%; padding-right: 1.5rem; }
+
+    .checklist-table tbody {
+      display: block;
+    }
+
+    @media (min-width: 768px) {
+      .checklist-table tbody {
+        display: table-row-group;
+      }
+    }
+
+    /* Table Rows */
+    .checklist-row {
+      display: block;
+      border-bottom: 1px solid rgba(229, 231, 235, 0.8);
+      background-color: #ffffff;
+      transition: background-color 0.25s ease, border-left-color 0.25s ease;
+      border-left: 4px solid transparent;
+    }
+
+    @media (min-width: 768px) {
+      .checklist-row {
+        display: table-row;
+      }
+    }
+
+    .checklist-row:last-child {
+      border-bottom: none;
+    }
+
+    .checklist-row:hover {
+      background-color: rgba(249, 250, 251, 0.5);
+    }
+
+    /* OK Status Row */
+    .checklist-row.status-ok {
+      background-color: var(--color-ok-bg);
+      border-left: 4px solid var(--color-ok);
+    }
+
+    /* À Reprendre Status Row */
+    .checklist-row.status-rep {
+      background-color: var(--color-rep-bg);
+      border-left: 4px solid var(--color-rep);
+    }
+
+    /* Cells */
+    .cell-elem {
+      display: block;
+      padding: 1rem;
+      vertical-align: middle;
+    }
+
+    @media (min-width: 768px) {
+      .cell-elem {
+        display: table-cell;
+        width: 45%;
+        padding: 1.25rem 1.5rem;
+      }
+    }
+
+    .cell-action-desktop {
+      display: none;
+      vertical-align: middle;
+      padding: 1.25rem 1rem;
+      width: 35%;
+    }
+
+    @media (min-width: 768px) {
+      .cell-action-desktop {
+        display: table-cell;
+      }
+    }
+
+    .cell-status {
+      display: block;
+      padding: 0.75rem 1rem 1rem 1rem;
+      vertical-align: middle;
+      border-top: 1px solid #f3f4f6;
+    }
+
+    @media (min-width: 768px) {
+      .cell-status {
+        display: table-cell;
+        width: 20%;
+        padding: 1.25rem 1.5rem;
+        border-top: none;
+      }
+    }
+
+    .mobile-header-label {
+      display: block;
+      font-size: 0.625rem;
+      font-weight: 700;
+      color: #9ca3af;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      margin-bottom: 0.25rem;
+    }
+
+    @media (min-width: 768px) {
+      .mobile-header-label {
+        display: none;
+      }
+    }
+
+    .elem-title-wrap {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.625rem;
+    }
+
+    .elem-title {
+      color: var(--text-heading);
+      font-size: 0.875rem;
+      font-weight: 600;
+      line-height: 1.5;
+    }
+
+    @media (min-width: 768px) {
+      .elem-title {
+        font-size: 0.9375rem;
+      }
+    }
+
+    .status-badge-icon {
+      flex-shrink: 0;
+      margin-top: 0.125rem;
+      display: inline-flex;
+      animation: popIn 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+
+    @keyframes popIn {
+      0% { transform: scale(0) rotate(-20deg); opacity: 0; }
+      100% { transform: scale(1) rotate(0); opacity: 1; }
+    }
+
+    .action-text {
+      color: #6b7280;
+      font-style: italic;
+      font-size: 0.875rem;
+      line-height: 1.5;
+      font-weight: 500;
+    }
+
+    .action-mobile-card {
+      margin-top: 0.5rem;
+      padding: 0.75rem;
+      background-color: rgba(249, 250, 251, 0.9);
+      border-radius: 0.5rem;
+      border: 1px solid #e5e7eb;
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+    }
+
+    @media (min-width: 768px) {
+      .action-mobile-card {
+        display: none;
+      }
+    }
+
+    .action-mobile-label {
+      font-size: 0.5625rem;
+      font-weight: 700;
+      color: #9ca3af;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+
+    .action-mobile-text {
+      font-size: 0.75rem;
+      font-style: italic;
+      color: #4b5563;
+      line-height: 1.4;
+    }
+
+    /* Buttons inside fieldset */
+    .status-group {
+      display: flex;
+      align-items: center;
+      gap: 0.625rem;
+      border: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .btn-status {
+      flex: 1;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      padding: 0.375rem 0.875rem;
+      border-radius: 0.5rem;
+      border: 1px solid #d1d5db;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      background-color: #ffffff;
+      color: #374151;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      font-family: inherit;
+    }
+
+    @media (min-width: 640px) {
+      .btn-status {
+        flex: initial;
+      }
+    }
+
+    .btn-status:hover {
+      background-color: #f9fafb;
+    }
+
+    .btn-status:focus-visible {
+      outline: 2px solid var(--accent-pres);
+      outline-offset: 2px;
+    }
+
+    .btn-status svg {
+      flex-shrink: 0;
+      color: #9ca3af;
+      transition: color 0.2s;
+    }
+
+    /* Active OK state */
+    .btn-status.is-ok {
+      background-color: var(--color-ok);
+      border-color: var(--color-ok);
+      color: #ffffff;
+      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+    }
+
+    .btn-status.is-ok svg {
+      color: #ffffff;
+    }
+
+    .btn-status.is-ok:hover {
+      background-color: #15803d;
+      border-color: #15803d;
+    }
+
+    .btn-status.is-ok:focus-visible {
+      outline: 2px solid #4ade80;
+    }
+
+    /* Active REPRENDRE state */
+    .btn-status.is-rep {
+      background-color: var(--color-rep);
+      border-color: var(--color-rep);
+      color: #ffffff;
+      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+    }
+
+    .btn-status.is-rep svg {
+      color: #ffffff;
+    }
+
+    .btn-status.is-rep:hover {
+      background-color: #c2410c;
+      border-color: #c2410c;
+    }
+
+    .btn-status.is-rep:focus-visible {
+      outline: 2px solid #fb923c;
+    }
+
+    /* Footer & Exports */
+    footer {
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+      margin-top: 1.5rem;
+      padding-bottom: 3rem;
+    }
+
+    .footer-actions {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .footer-btn-group {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 0.625rem;
+    }
+
+    .btn-footer {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.625rem 1.125rem;
+      border-radius: 0.5rem;
+      font-size: 0.8125rem;
+      font-weight: 600;
+      letter-spacing: 0.025em;
+      border: 1px solid var(--border-card);
+      background-color: #ffffff;
+      color: #374151;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      font-family: inherit;
+      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+    }
+
+    .btn-footer:hover:not(:disabled) {
+      background-color: #f9fafb;
+    }
+
+    .btn-footer:focus-visible {
+      outline: 2px solid var(--accent-pres);
+      outline-offset: 2px;
+    }
+
+    .btn-footer:disabled {
+      background-color: #f3f4f6;
+      border-color: #e5e7eb;
+      color: #9ca3af;
+      cursor: not-allowed;
+      box-shadow: none;
+    }
+
+    .btn-reset:hover:not(:disabled) {
+      color: #dc2626;
+      border-color: #fecaca;
+      background-color: #fef2f2;
+    }
+
+    .btn-export:hover:not(:disabled) {
+      color: var(--accent-pres);
+      border-color: rgba(var(--accent-pres-rgb), 0.3);
+    }
+
+    .local-storage-indicator {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.75rem;
+      color: var(--text-muted);
+    }
+
+    .pulse-dot {
+      color: #22c55e;
+      animation: pulse 2s infinite ease-in-out;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.4; transform: scale(0.9); }
+    }
+
+    .code-badge {
+      background-color: #f3f4f6;
+      color: #374151;
+      padding: 0.125rem 0.375rem;
+      border-radius: 0.25rem;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-size: 0.625rem;
+    }
+
+    /* Toast Notification for Exports */
+    .toast {
+      position: fixed;
+      bottom: 1.5rem;
+      right: 1.5rem;
+      background-color: #1f2937;
+      color: #ffffff;
+      padding: 0.75rem 1.25rem;
+      border-radius: 0.5rem;
+      font-size: 0.8125rem;
+      font-weight: 500;
+      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.2), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      opacity: 0;
+      transform: translateY(1rem);
+      transition: all 0.3s ease;
+      pointer-events: none;
+      z-index: 9999;
+    }
+
+    .toast.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Print styles for export */
+    @media print {
+      body {
+        background-color: #ffffff;
+        padding: 0;
+        color: #000000;
+      }
+
+      .nav-top,
+      .info-banner,
+      .footer-actions,
+      .toast,
+      .btn-status,
+      .action-mobile-card {
+        display: none !important;
+      }
+
+      .container {
+        max-width: 100%;
+        margin: 0;
+      }
+
+      .checklist-card, .progress-card {
+        box-shadow: none !important;
+        border: 1px solid #cccccc !important;
+      }
+
+      .checklist-table, .checklist-table thead, .checklist-table tbody, .checklist-row, .cell-elem, .cell-action-desktop, .cell-status {
+        display: table !important;
+      }
+      .checklist-table thead { display: table-header-group !important; }
+      .checklist-table tbody { display: table-row-group !important; }
+      .checklist-row { display: table-row !important; }
+      .cell-elem, .cell-action-desktop, .cell-status { display: table-cell !important; }
+
+      .checklist-table th {
+        background-color: #333333 !important;
+        color: #ffffff !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+
+      .print-status-text {
+        display: inline-block !important;
+        font-weight: 700;
+        text-transform: uppercase;
+        font-size: 0.75rem;
+      }
+
+      .print-status-text.print-ok { color: #15803d; }
+      .print-status-text.print-rep { color: #c2410c; }
+      .print-status-text.print-none { color: #666666; }
+    }
+
+    .print-status-text {
+      display: none;
+    }
+
+    /* Screen reader helper */
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border-width: 0;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    
+
+
+    <!-- Banner Headers / Identity -->
+    <header id="activity-header">
+      <div class="header-badge">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z" />
+          <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z" />
+        </svg>
+        <span>Activité Pédagogique Interactive</span>
+      </div>
+
+      <div class="header-main">
+        <div>
+          <h1 class="sr-only">Checklist de préparation à la journée présentielle</h1>
+          <div class="header-title">
+            CHECKLIST <span class="highlight">PRÉSENTIEL</span>
+          </div>
+          <p class="header-subtitle">
+            Finalisez votre préparation avant le Jour J
+          </p>
+        </div>
+
+        <div class="header-tag">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M8 2v4" />
+            <path d="M16 2v4" />
+            <rect width="18" height="18" x="3" y="4" rx="2" />
+            <path d="M3 10h18" />
+          </svg>
+          <span>Jour J présentiel</span>
+        </div>
+      </div>
+    </header>
+
+    <!-- Progress Card Section -->
+    <section class="progress-card" id="progress-card" aria-labelledby="progress-heading">
+      <div class="progress-header">
+        <div>
+          <h2 class="progress-heading" id="progress-heading">VOTRE PROGRESSION</h2>
+          <p class="progress-desc">Suivi automatique de votre préparation pour la session.</p>
+        </div>
+        <div class="progress-counter">
+          <span class="validation-ratio" id="validation-ratio" aria-live="polite">
+            <span id="stat-ok-count">0</span>
+            <span class="validation-ratio-total">/ 7</span>
+          </span>
+          <span class="validation-ratio-label">validés OK</span>
+        </div>
+      </div>
+
+      <!-- Progress bar -->
+      <div
+        class="progress-track"
+        role="progressbar"
+        id="progressbar"
+        aria-valuenow="0"
+        aria-valuemin="0"
+        aria-valuemax="7"
+        aria-label="Progression de préparation : 0 sur 7 éléments validés"
+      >
+        <div class="progress-fill" id="progress-fill"></div>
+      </div>
+
+      <!-- Summary Chips -->
+      <div class="stats-grid">
+        <div class="stat-chip stat-ok" id="stat-ok">
+          <div class="stat-label">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <circle cx="12" cy="12" r="10" />
+              <path d="m9 12 2 2 4-4" />
+            </svg>
+            <span>Prêts</span>
+          </div>
+          <span class="stat-value" id="stat-ok-chip">0</span>
+        </div>
+
+        <div class="stat-chip stat-rep" id="stat-reprendre">
+          <div class="stat-label">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <circle cx="12" cy="12" r="10" />
+              <line x1="12" x2="12" y1="8" y2="12" />
+              <line x1="12" x2="12.01" y1="16" y2="16" />
+            </svg>
+            <span>À reprendre</span>
+          </div>
+          <span class="stat-value" id="stat-rep-chip">0</span>
+        </div>
+
+        <div class="stat-chip stat-neutral" id="stat-neutral">
+          <div class="stat-label">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <circle cx="12" cy="12" r="10" />
+              <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3" />
+              <line x1="12" x2="12.01" y1="17" y2="17" />
+            </svg>
+            <span>Non évalués</span>
+          </div>
+          <span class="stat-value" id="stat-neutral-chip">7</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Informational Banner -->
+    <div class="info-banner" id="info-banner" role="note">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <circle cx="12" cy="12" r="10" />
+        <path d="M12 16v-4" />
+        <path d="M12 8h.01" />
+      </svg>
+      <div>
+        <strong>Comment ça marche ?</strong> Pour chaque élément, indiquez par <span style="font-weight: 700; color: #15803d;">OK</span> si vous êtes prêt, ou par <span style="font-weight: 700; color: #c2410c;">À reprendre</span> s'il reste à travailler. Cliquez à nouveau sur une option pour la désélectionner (retour au statut neutre). Vos réponses sont sauvegardées automatiquement.
+      </div>
+    </div>
+
+    <!-- Table Container -->
+    <main class="checklist-card" id="checklist-container">
+      <table class="checklist-table" id="checklist-table">
+        <thead>
+          <tr>
+            <th scope="col" class="col-elem">Élément à vérifier</th>
+            <th scope="col" class="col-action">À faire si incomplet</th>
+            <th scope="col" class="col-status">Statut</th>
+          </tr>
+        </thead>
+        <tbody id="checklist-tbody">
+          <!-- Rendered dynamically by vanilla JS -->
+        </tbody>
+      </table>
+    </main>
+
+    <!-- Footer Actions & Exports -->
+    <footer id="activity-footer">
+      <div class="footer-actions">
+        <div class="footer-btn-group">
+          <!-- Reset Button -->
+          <button
+            type="button"
+            class="btn-footer btn-reset"
+            id="btn-reset-checklist"
+            disabled
+            aria-label="Réinitialiser toutes les cases à cocher"
+          >
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8" />
+              <path d="M3 3v5h5" />
+            </svg>
+            <span>Réinitialiser la checklist</span>
+          </button>
+
+          <!-- Export: Imprimer / PDF -->
+          <button
+            type="button"
+            class="btn-footer btn-export"
+            id="btn-print-export"
+            aria-label="Imprimer ou enregistrer en PDF"
+          >
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <polyline points="6 9 6 2 18 2 18 9" />
+              <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2" />
+              <rect width="12" height="8" x="6" y="14" />
+            </svg>
+            <span>Imprimer / PDF</span>
+          </button>
+
+          <!-- Export: Copier le récapitulatif -->
+          <button
+            type="button"
+            class="btn-footer btn-export"
+            id="btn-copy-export"
+            aria-label="Copier le récapitulatif de la checklist"
+          >
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z" />
+              <polyline points="14 2 14 8 20 8" />
+              <line x1="16" x2="8" y1="13" y2="13" />
+              <line x1="16" x2="8" y1="17" y2="17" />
+              <line x1="10" x2="8" y1="9" y2="9" />
+            </svg>
+            <span>Copier le récapitulatif</span>
+          </button>
+        </div>
+
+        <!-- LocalStorage Indicator -->
+        <div class="local-storage-indicator" id="local-storage-indicator">
+          <svg class="pulse-dot" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <polyline points="9 11 12 14 22 4" />
+            <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11" />
+          </svg>
+          <span>Sauvegarde automatique locale activée • Clé : <code class="code-badge">checklist_presentiel_v1</code></span>
+        </div>
+      </div>
+    </footer>
+
+  </div>
+
+  <!-- Toast for export feedback -->
+  <div class="toast" id="toast" role="status" aria-live="polite">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#22c55e" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <circle cx="12" cy="12" r="10" />
+      <path d="m9 12 2 2 4-4" />
+    </svg>
+    <span id="toast-message">Récapitulatif copié dans le presse-papier !</span>
+  </div>
+
+  <!-- Vanilla JavaScript Logic -->
+  <script>
+    (function() {
+      'use strict';
+
+      // 1. Data Source
+      const checklistItems = [
+        {
+          id: 1,
+          element: "Livrables dans votre journal de formation n°1 à n°9 complétés et lisibles en un coup d'œil",
+          actionRequired: "Reprendre la page concernée et la densifier en points clés"
+        },
+        {
+          id: 2,
+          element: "Synthèse de la formation (n°10 partie 1) complétée",
+          actionRequired: "Reprendre la partie 2 dernier module et sélectionner l'essentiel"
+        },
+        {
+          id: 3,
+          element: "Les 6 profils NEXIA identifiés de mémoire (prénom + trait clé + levier)",
+          actionRequired: "Reprendre le tableau de la partie 2 du dernier module et ancrer les profils par une carte mentale"
+        },
+        {
+          id: 4,
+          element: "Les 4 registres de perturbateurs connus (Humain / Organisationnel / RH / Externe)",
+          actionRequired: "Relire la partie 3 du dernier module"
+        },
+        {
+          id: 5,
+          element: "Je sais citer le livrable que j'utilise pour chaque registre",
+          actionRequired: "Relire la synthèse de la formation (2e partie du dernier module)"
+        },
+        {
+          id: 6,
+          element: "Mes 5 réflexes managériaux sont formulés et mémorisés",
+          actionRequired: "Relire la partie 2 de ce dernier module, les reformuler avec vos propres mots"
+        },
+        {
+          id: 7,
+          element: "Je sais comment se déroule la journée (tirage, collectif, individuel, bilan)",
+          actionRequired: "Relire l'encart « Jour J » en début de ce module"
+        }
+      ];
+
+      const STORAGE_KEY = 'checklist_presentiel_v1';
+      const totalItems = checklistItems.length;
+
+      // 2. State Management with LocalStorage
+      let states = {};
+
+      function loadStates() {
+        try {
+          const saved = localStorage.getItem(STORAGE_KEY);
+          if (saved) {
+            states = JSON.parse(saved) || {};
+          }
+        } catch (e) {
+          console.error("Erreur de chargement de checklist_presentiel_v1 depuis localStorage", e);
+          states = {};
+        }
+      }
+
+      function saveStates() {
+        try {
+          localStorage.setItem(STORAGE_KEY, JSON.stringify(states));
+        } catch (e) {
+          console.error("Erreur de sauvegarde de checklist_presentiel_v1 dans localStorage", e);
+        }
+      }
+
+      // 3. Status Toggle Handler
+      function setItemStatus(id, newStatus) {
+        if (states[id] === newStatus) {
+          // Toggle off to neutral
+          delete states[id];
+        } else {
+          states[id] = newStatus;
+        }
+        saveStates();
+        updateUI();
+      }
+
+      function resetAll() {
+        const confirmed = window.confirm(
+          "Voulez-vous vraiment réinitialiser toutes vos réponses ? Cette action effacera votre progression actuelle de préparation."
+        );
+        if (confirmed) {
+          states = {};
+          saveStates();
+          updateUI();
+        }
+      }
+
+      // 4. Icons SVGs
+      const ICON_OK = `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#16a34a" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>`;
+      const ICON_REP = `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#ea580c" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" x2="12" y1="8" y2="12"/><line x1="12" x2="12.01" y1="16" y2="16"/></svg>`;
+
+      // 5. Render Checklist Rows
+      const tbody = document.getElementById('checklist-tbody');
+
+      function renderTable() {
+        tbody.innerHTML = '';
+        checklistItems.forEach((item) => {
+          const currentStatus = states[item.id] || null;
+
+          const tr = document.createElement('tr');
+          tr.className = `checklist-row ${currentStatus === 'OK' ? 'status-ok' : (currentStatus === 'REPRENDRE' ? 'status-rep' : '')}`;
+          tr.id = `row-item-${item.id}`;
+
+          // Column 1 (Item & mobile action)
+          let statusIconHtml = '';
+          let printStatusText = '<span class="print-status-text print-none">[ ] Non évalué</span>';
+          if (currentStatus === 'OK') {
+            statusIconHtml = `<span class="status-badge-icon" id="icon-ok-${item.id}">${ICON_OK}</span>`;
+            printStatusText = '<span class="print-status-text print-ok">[✓] OK</span>';
+          } else if (currentStatus === 'REPRENDRE') {
+            statusIconHtml = `<span class="status-badge-icon" id="icon-rep-${item.id}">${ICON_REP}</span>`;
+            printStatusText = '<span class="print-status-text print-rep">[!] À REPRENDRE</span>';
+          }
+
+          tr.innerHTML = `
+            <td class="cell-elem">
+              <span class="mobile-header-label">Élément à vérifier</span>
+              <div class="elem-title-wrap">
+                <span class="elem-title">${item.element}</span>
+                ${statusIconHtml}
+              </div>
+              <div class="action-mobile-card">
+                <span class="action-mobile-label">À faire si incomplet</span>
+                <span class="action-mobile-text">${item.actionRequired}</span>
+              </div>
+            </td>
+
+            <td class="cell-action-desktop">
+              <span class="action-text">${item.actionRequired}</span>
+            </td>
+
+            <td class="cell-status">
+              <span class="mobile-header-label">Statut</span>
+              ${printStatusText}
+              <fieldset class="status-group" id="fieldset-${item.id}">
+                <legend class="sr-only">Statut pour : ${item.element}</legend>
+                
+                <button
+                  type="button"
+                  role="radio"
+                  aria-checked="${currentStatus === 'OK'}"
+                  aria-label="${item.element} — Statut OK"
+                  class="btn-status ${currentStatus === 'OK' ? 'is-ok' : ''}"
+                  id="btn-ok-${item.id}"
+                  data-id="${item.id}"
+                  data-status="OK"
+                >
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <circle cx="12" cy="12" r="10" />
+                    <path d="m9 12 2 2 4-4" />
+                  </svg>
+                  <span>OK</span>
+                </button>
+
+                <button
+                  type="button"
+                  role="radio"
+                  aria-checked="${currentStatus === 'REPRENDRE'}"
+                  aria-label="${item.element} — À reprendre"
+                  class="btn-status ${currentStatus === 'REPRENDRE' ? 'is-rep' : ''}"
+                  id="btn-rep-${item.id}"
+                  data-id="${item.id}"
+                  data-status="REPRENDRE"
+                >
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <circle cx="12" cy="12" r="10" />
+                    <line x1="12" x2="12" y1="8" y2="12" />
+                    <line x1="12" x2="12.01" y1="16" y2="16" />
+                  </svg>
+                  <span>À reprendre</span>
+                </button>
+              </fieldset>
+            </td>
+          `;
+
+          tbody.appendChild(tr);
+        });
+      }
+
+      // 6. Update Progress and Counters
+      const statOkCount = document.getElementById('stat-ok-count');
+      const statOkChip = document.getElementById('stat-ok-chip');
+      const statRepChip = document.getElementById('stat-rep-chip');
+      const statNeutralChip = document.getElementById('stat-neutral-chip');
+      const progressFill = document.getElementById('progress-fill');
+      const progressbar = document.getElementById('progressbar');
+      const btnReset = document.getElementById('btn-reset-checklist');
+
+      function updateProgress() {
+        const okCount = Object.values(states).filter(s => s === 'OK').length;
+        const repCount = Object.values(states).filter(s => s === 'REPRENDRE').length;
+        const neutralCount = totalItems - okCount - repCount;
+        const percent = totalItems > 0 ? (okCount / totalItems) * 100 : 0;
+
+        statOkCount.textContent = okCount;
+        statOkChip.textContent = okCount;
+        statRepChip.textContent = repCount;
+        statNeutralChip.textContent = neutralCount;
+
+        progressFill.style.width = `${percent}%`;
+        progressbar.setAttribute('aria-valuenow', okCount);
+        progressbar.setAttribute('aria-label', `Progression de préparation : ${okCount} sur ${totalItems} éléments validés`);
+
+        const hasAnyAnswers = Object.keys(states).length > 0;
+        btnReset.disabled = !hasAnyAnswers;
+      }
+
+      function updateUI() {
+        renderTable();
+        updateProgress();
+      }
+
+      // Event delegation for table buttons
+      tbody.addEventListener('click', function(e) {
+        const btn = e.target.closest('.btn-status');
+        if (!btn) return;
+        const id = parseInt(btn.getAttribute('data-id'), 10);
+        const status = btn.getAttribute('data-status');
+        if (id && status) {
+          setItemStatus(id, status);
+        }
+      });
+
+      // Reset button click
+      btnReset.addEventListener('click', resetAll);
+
+      // 7. Exports Features
+      // A) Print / PDF export
+      const btnPrint = document.getElementById('btn-print-export');
+      btnPrint.addEventListener('click', function() {
+        window.print();
+      });
+
+      // B) Text / Markdown Summary export
+      const btnCopy = document.getElementById('btn-copy-export');
+      const toast = document.getElementById('toast');
+      const toastMessage = document.getElementById('toast-message');
+
+      function showToast(msg) {
+        toastMessage.textContent = msg;
+        toast.classList.add('show');
+        setTimeout(() => {
+          toast.classList.remove('show');
+        }, 3000);
+      }
+
+      function generateSummaryText() {
+        const okCount = Object.values(states).filter(s => s === 'OK').length;
+        const repCount = Object.values(states).filter(s => s === 'REPRENDRE').length;
+        const neutralCount = totalItems - okCount - repCount;
+        const now = new Date().toLocaleDateString('fr-FR', {
+          day: '2-digit',
+          month: 'long',
+          year: 'numeric'
+        });
+
+        let text = `CHECKLIST PRÉSENTIEL — RÉCAPITULATIF (${now})\n`;
+        text += `Progression : ${okCount}/${totalItems} validés OK (${Math.round((okCount / totalItems) * 100)}%)\n`;
+        text += `• Prêts : ${okCount}\n• À reprendre : ${repCount}\n• Non évalués : ${neutralCount}\n\n`;
+        text += `DÉTAIL PAR ÉLÉMENT :\n`;
+
+        checklistItems.forEach((item, index) => {
+          const status = states[item.id];
+          const statusLabel = status === 'OK' ? '[✓] OK' : (status === 'REPRENDRE' ? '[!] À REPRENDRE' : '[ ] NON ÉVALUÉ');
+          text += `${index + 1}. ${statusLabel} : ${item.element}\n`;
+          if (status !== 'OK') {
+            text += `   ↳ À faire : ${item.actionRequired}\n`;
+          }
+        });
+
+        return text;
+      }
+
+      btnCopy.addEventListener('click', function() {
+        const summary = generateSummaryText();
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(summary)
+            .then(() => showToast("Récapitulatif copié dans le presse-papier !"))
+            .catch(() => fallbackCopy(summary));
+        } else {
+          fallbackCopy(summary);
+        }
+      });
+
+      function fallbackCopy(text) {
+        const textarea = document.createElement('textarea');
+        textarea.value = text;
+        textarea.style.position = 'fixed';
+        textarea.style.opacity = '0';
+        document.body.appendChild(textarea);
+        textarea.select();
+        try {
+          document.execCommand('copy');
+          showToast("Récapitulatif copié dans le presse-papier !");
+        } catch (err) {
+          showToast("Impossible de copier automatiquement.");
+        }
+        document.body.removeChild(textarea);
+      }
+
+      // Initialize on load
+      loadStates();
+      updateUI();
+    })();
+  </script>
+</body>
+</html>

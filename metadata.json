@@ -1,0 +1,6 @@
+{
+  "name": "Checklist de Préparation Présentielle",
+  "description": "Une activité pédagogique interactive pour préparer la journée présentielle, avec suivi de progression et persistance locale.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
