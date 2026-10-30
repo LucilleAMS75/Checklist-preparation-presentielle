@@ -9,7 +9,7 @@ import { UserStates, ChecklistStatus } from './types';
 import { ProgressIndicator } from './components/ProgressIndicator';
 import { ChecklistItemRow } from './components/ChecklistItemRow';
 import { ResetButton } from './components/ResetButton';
-import { BookOpen, CheckSquare, Info, Calendar } from 'lucide-react';
+import { BookOpen, CheckSquare, Info, Calendar, Maximize2, Minimize2 } from 'lucide-react';
 import { motion } from 'motion/react';
 
 export default function App() {
@@ -51,14 +51,30 @@ export default function App() {
     setStates({});
   };
 
+  const [isFullscreen, setIsFullscreen] = useState(false);
+
+  useEffect(() => {
+    const handleFsChange = () => {
+      setIsFullscreen(!!document.fullscreenElement);
+    };
+    document.addEventListener('fullscreenchange', handleFsChange);
+    return () => document.removeEventListener('fullscreenchange', handleFsChange);
+  }, []);
+
+  const toggleFullscreen = () => {
+    if (!document.fullscreenElement) {
+      document.documentElement.requestFullscreen().catch(() => {});
+    } else {
+      document.exitFullscreen().catch(() => {});
+    }
+  };
+
   const hasAnyAnswers = Object.keys(states).length > 0;
   const totalItems = checklistItems.length;
 
   return (
     <div className="min-h-screen bg-[#F9F9FB] text-gray-800 py-8 px-4 sm:px-6 lg:px-8 font-sans selection:bg-accent-pres/10 selection:text-accent-pres">
       <div className="max-w-4xl mx-auto">
-        
-
 
         {/* Banner Headers / Identity */}
         <header className="mb-6" id="activity-header">
@@ -77,9 +93,21 @@ export default function App() {
                 Finalisez votre préparation avant le Jour J
               </p>
             </div>
-            <div className="flex items-center gap-1.5 self-start bg-accent-pres/5 border border-accent-pres/10 text-accent-pres px-3.5 py-2 rounded-lg text-[10px] font-bold uppercase tracking-widest">
-              <Calendar size={12} aria-hidden="true" />
-              <span>Jour J présentiel</span>
+            <div className="flex items-center gap-2.5 self-start sm:self-end flex-wrap">
+              <button
+                type="button"
+                onClick={toggleFullscreen}
+                className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-white hover:bg-gray-50 border border-gray-200 rounded-lg text-xs font-bold text-gray-700 hover:text-accent-pres uppercase tracking-wider transition-all duration-200 shadow-xs cursor-pointer focus:outline-none focus:ring-2 focus:ring-accent-pres"
+                aria-label={isFullscreen ? 'Quitter le plein écran' : 'Activer le plein écran'}
+              >
+                {isFullscreen ? <Minimize2 size={13} /> : <Maximize2 size={13} />}
+                <span>{isFullscreen ? 'Quitter plein écran' : 'Plein écran'}</span>
+              </button>
+
+              <div className="flex items-center gap-1.5 bg-accent-pres/5 border border-accent-pres/10 text-accent-pres px-3.5 py-2 rounded-lg text-[10px] font-bold uppercase tracking-widest">
+                <Calendar size={12} aria-hidden="true" />
+                <span>Jour J présentiel</span>
+              </div>
             </div>
           </div>
         </header>

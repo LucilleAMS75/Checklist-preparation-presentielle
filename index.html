@@ -128,11 +128,77 @@
       }
     }
 
+    .header-actions-right {
+      display: flex;
+      align-items: center;
+      gap: 0.625rem;
+      align-self: flex-start;
+      flex-wrap: wrap;
+    }
+
+    .btn-fullscreen {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.375rem;
+      background-color: #ffffff;
+      border: 1px solid var(--border-card);
+      color: var(--text-main);
+      padding: 0.45rem 0.8rem;
+      border-radius: 0.5rem;
+      font-size: 0.6875rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      font-family: inherit;
+      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+    }
+
+    .btn-fullscreen:hover {
+      background-color: #f9fafb;
+      color: var(--accent-pres);
+      border-color: rgba(var(--accent-pres-rgb), 0.3);
+    }
+
+    .btn-fullscreen:focus-visible {
+      outline: 2px solid var(--accent-pres);
+      outline-offset: 2px;
+    }
+
+    .btn-fullscreen svg {
+      flex-shrink: 0;
+    }
+
+    /* Pseudo-fullscreen fallback when iframe denies native requestFullscreen */
+    body.pseudo-fullscreen {
+      position: fixed !important;
+      top: 0 !important;
+      left: 0 !important;
+      right: 0 !important;
+      bottom: 0 !important;
+      width: 100vw !important;
+      height: 100vh !important;
+      z-index: 99999 !important;
+      overflow-y: auto !important;
+      background-color: var(--bg-page) !important;
+      padding: 1.5rem 1rem !important;
+    }
+
+    :fullscreen {
+      background-color: var(--bg-page);
+      overflow-y: auto;
+    }
+
+    :-webkit-full-screen {
+      background-color: var(--bg-page);
+      overflow-y: auto;
+    }
+
     .header-tag {
       display: inline-flex;
       align-items: center;
       gap: 0.375rem;
-      align-self: flex-start;
       background-color: rgba(var(--accent-pres-rgb), 0.05);
       border: 1px solid rgba(var(--accent-pres-rgb), 0.12);
       color: var(--accent-pres);
@@ -849,14 +915,32 @@
           </p>
         </div>
 
-        <div class="header-tag">
-          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <path d="M8 2v4" />
-            <path d="M16 2v4" />
-            <rect width="18" height="18" x="3" y="4" rx="2" />
-            <path d="M3 10h18" />
-          </svg>
-          <span>Jour J présentiel</span>
+        <div class="header-actions-right">
+          <button
+            type="button"
+            class="btn-fullscreen"
+            id="btn-fullscreen"
+            aria-label="Basculer en plein écran"
+            title="Plein écran"
+          >
+            <svg class="icon-expand" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3" />
+            </svg>
+            <svg class="icon-compress" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="display: none;">
+              <path d="M8 3v3a2 2 0 0 1-2 2H3m18 0h-3a2 2 0 0 1-2-2V3m0 18v-3a2 2 0 0 1 2-2h3M3 16h3a2 2 0 0 1 2 2v3" />
+            </svg>
+            <span class="btn-fullscreen-text">Plein écran</span>
+          </button>
+
+          <div class="header-tag">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M8 2v4" />
+              <path d="M16 2v4" />
+              <rect width="18" height="18" x="3" y="4" rx="2" />
+              <path d="M3 10h18" />
+            </svg>
+            <span>Jour J présentiel</span>
+          </div>
         </div>
       </div>
     </header>
@@ -1006,6 +1090,22 @@
               <line x1="10" x2="8" y1="9" y2="9" />
             </svg>
             <span>Copier le récapitulatif</span>
+          </button>
+
+          <!-- Bouton Plein écran Footer -->
+          <button
+            type="button"
+            class="btn-footer btn-export"
+            id="btn-footer-fullscreen"
+            aria-label="Basculer en plein écran"
+          >
+            <svg class="icon-expand" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3" />
+            </svg>
+            <svg class="icon-compress" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="display: none;">
+              <path d="M8 3v3a2 2 0 0 1-2 2H3m18 0h-3a2 2 0 0 1-2-2V3m0 18v-3a2 2 0 0 1 2-2h3M3 16h3a2 2 0 0 1 2 2v3" />
+            </svg>
+            <span class="btn-fullscreen-text">Plein écran</span>
           </button>
         </div>
 
@@ -1336,6 +1436,116 @@
         }
         document.body.removeChild(textarea);
       }
+
+      // 8. Fullscreen Features
+      function isFullscreen() {
+        return !!(
+          document.fullscreenElement ||
+          document.webkitFullscreenElement ||
+          document.mozFullScreenElement ||
+          document.msFullscreenElement ||
+          document.body.classList.contains('pseudo-fullscreen')
+        );
+      }
+
+      function updateFullscreenUI(active) {
+        const expandIcons = document.querySelectorAll('.icon-expand');
+        const compressIcons = document.querySelectorAll('.icon-compress');
+        const textElements = document.querySelectorAll('.btn-fullscreen-text');
+
+        expandIcons.forEach(icon => {
+          icon.style.display = active ? 'none' : 'inline-block';
+        });
+        compressIcons.forEach(icon => {
+          icon.style.display = active ? 'inline-block' : 'none';
+        });
+        textElements.forEach(t => {
+          t.textContent = active ? 'Quitter plein écran' : 'Plein écran';
+        });
+
+        const btnTop = document.getElementById('btn-fullscreen');
+        const btnFoot = document.getElementById('btn-footer-fullscreen');
+        const label = active ? 'Quitter le mode plein écran' : 'Passer en plein écran';
+        if (btnTop) btnTop.setAttribute('aria-label', label);
+        if (btnFoot) btnFoot.setAttribute('aria-label', label);
+      }
+
+      function toggleFullscreen() {
+        if (isFullscreen()) {
+          // Exit Fullscreen
+          if (document.exitFullscreen) {
+            document.exitFullscreen().catch(() => {});
+          } else if (document.webkitExitFullscreen) {
+            document.webkitExitFullscreen();
+          } else if (document.mozCancelFullScreen) {
+            document.mozCancelFullScreen();
+          } else if (document.msExitFullscreen) {
+            document.msExitFullscreen();
+          }
+          document.body.classList.remove('pseudo-fullscreen');
+          updateFullscreenUI(false);
+        } else {
+          // Request Fullscreen
+          const docEl = document.documentElement;
+          const req = docEl.requestFullscreen ||
+                      docEl.webkitRequestFullscreen ||
+                      docEl.mozRequestFullScreen ||
+                      docEl.msRequestFullscreen;
+
+          if (req) {
+            const promise = req.call(docEl);
+            if (promise && promise.then) {
+              promise.then(() => {
+                updateFullscreenUI(true);
+              }).catch(() => {
+                // If denied (e.g. iframe permission policy), fallback to pseudo-fullscreen
+                document.body.classList.add('pseudo-fullscreen');
+                updateFullscreenUI(true);
+              });
+            } else {
+              updateFullscreenUI(true);
+            }
+          } else {
+            // Fallback for browsers or embedded contexts without native Fullscreen API
+            document.body.classList.add('pseudo-fullscreen');
+            updateFullscreenUI(true);
+          }
+        }
+      }
+
+      const btnTopFullscreen = document.getElementById('btn-fullscreen');
+      const btnFooterFullscreen = document.getElementById('btn-footer-fullscreen');
+
+      if (btnTopFullscreen) {
+        btnTopFullscreen.addEventListener('click', toggleFullscreen);
+      }
+      if (btnFooterFullscreen) {
+        btnFooterFullscreen.addEventListener('click', toggleFullscreen);
+      }
+
+      // Listen to native fullscreen events (e.g. user hits Escape)
+      ['fullscreenchange', 'webkitfullscreenchange', 'mozfullscreenchange', 'MSFullscreenChange'].forEach(evt => {
+        document.addEventListener(evt, () => {
+          const active = !!(
+            document.fullscreenElement ||
+            document.webkitFullscreenElement ||
+            document.mozFullScreenElement ||
+            document.msFullscreenElement
+          );
+          if (!active) {
+            document.body.classList.remove('pseudo-fullscreen');
+          }
+          updateFullscreenUI(active);
+        });
+      });
+
+      // Escape key handler for pseudo-fullscreen
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && document.body.classList.contains('pseudo-fullscreen')) {
+          document.body.classList.remove('pseudo-fullscreen');
+          updateFullscreenUI(false);
+        }
+      });
 
       // Initialize on load
       loadStates();
